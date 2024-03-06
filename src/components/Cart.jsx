@@ -3,6 +3,7 @@ import CartItem from './CartItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFilteredCart } from '../app/productSlice'
 import TotalAmount from './TotalAmount'
+import MIssingCart from './MIssingCart'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -23,10 +24,14 @@ const Cart = () => {
 
   console.log(result);
 
+  if(cart.length<=0){
+    return <MIssingCart/>
+  }
+
 
 
   return (
-    <div className=' grid grid-cols-4 p-5 space-x-4 bg-[#f0f0f0] h-screen'>
+    <div className=' grid grid-cols-4 p-5 space-x-4 bg-[#f0f0f0] h-screen '>
     <div className=' col-span-3'>
     {cart && result.map((item) => <CartItem key={item.id} item={item} />)}
 

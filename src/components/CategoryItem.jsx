@@ -32,9 +32,9 @@ const CategoryItem = ({item,setShowIndex,setFalse,showChecked}) => {
 
 
   return (
-    <div>
-        <input id={item} type='checkbox' name='categoryItem'  checked={showChecked} onClick={handleClick} onChange={() => filterCategory(item)}/>
-        <label htmlFor={item}>{item}</label>
+    <div className=' my-3 mx-1 '>
+        <input className=' cursor-pointer' id={item} type='checkbox' name='categoryItem'  checked={showChecked} onClick={handleClick} onChange={() => filterCategory(item)}/>
+        <label className=' cursor-pointer ml-2' htmlFor={item}>{item}</label>
     </div>
   )
 }

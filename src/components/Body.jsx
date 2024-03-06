@@ -17,8 +17,8 @@ const Body = () => {
   if (!data) return <h1>Loading</h1>;
 
   return (
-    <div className="  grid grid-cols-12 pb-6  -z-10">
-      <div className=" col-span-2  border-2 border-gray-500 px-5 py-3">
+    <div className="  grid grid-cols-12 gap-5 pb-6  -z-10">
+      <div className=" col-span-2  border-r-2 border-gray-300 px-5 py-3">
         <Category />
       </div>
 

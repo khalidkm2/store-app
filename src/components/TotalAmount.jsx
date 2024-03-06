@@ -2,12 +2,12 @@ import React from 'react'
 
 const TotalAmount = ({cartResult,cart}) => {
      
-    console.log(cartResult);
-    console.log(cart);
+    // console.log(cartResult);
+    // console.log(cart);
 
     const totalPrice = cart.reduce((accum,current) => accum+current?.price,0)
-    console.log(totalPrice);
-    console.log(cart);
+    // console.log(totalPrice);
+    // console.log(cart);
 
 
   return (
