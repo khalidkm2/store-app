@@ -41,7 +41,8 @@ export const productSlice = createSlice({
            }
            state.cart = cart
            
-        }
+        },
+        
     }
 });
 

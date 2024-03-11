@@ -11,10 +11,10 @@ const TotalAmount = ({cartResult,cart}) => {
 
 
   return (
-    <div className=' bg-white border border-gray-400'>
-        <h1 className=' border-b border-gray-600'>Price Details</h1>
+    <div className=' bg-white border border-gray-400 p-4'>
+        <h1 className=' border-b border-gray-600 text-xl font-bold'>Price Details</h1>
         <div>
-        <h2>Price({cartResult.length} items)</h2>
+        <h2 className=' mt-2'>Price({cartResult.length} items)</h2>
         <p>{Math.floor(totalPrice)}</p>
         </div>
       

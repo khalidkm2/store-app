@@ -8,12 +8,17 @@ export const useFetch = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const jsonData = await response.json();
       dispatch(addAllProducts(jsonData));
+      } catch (error) {
+        console.log(error);
+      }
+      
     };
 
    !allProducts && fetchData();
