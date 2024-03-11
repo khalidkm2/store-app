@@ -17,7 +17,7 @@ const Category = () => {
 
   return (
     <div className=' font-semibold p-3 text-1xl border border-gray-500 rounded-lg bg-white '>
-        <h2 className=' cursor-pointer text-2xl' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
+        <h2 className=' cursor-pointer text-2xl text-center' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
         {showCategory && (<ul>
          {category && category.map((item,index) => <CategoryItem  setShowIndex={() => setShowIndex(index)}
             setFalse={() => setShowIndex(null)}

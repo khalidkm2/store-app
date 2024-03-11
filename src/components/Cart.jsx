@@ -31,8 +31,8 @@ const Cart = () => {
 
 
   return (
-    <div className=' grid grid-cols-4 p-5 space-x-4 bg-[#f0f0f0] h-screen '>
-    <div className=' col-span-3'>
+    <div className=' grid grid-cols-4 p-5 space-x-4 bg-[#f0f0f0] h-screen pt-10'>
+    <div className=' col-span-3 '>
     {cart && result.map((item) => <CartItem key={item.id} item={item} />)}
 
     </div>

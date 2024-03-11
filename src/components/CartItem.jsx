@@ -17,7 +17,7 @@ const CartItem = ({item}) => {
     }
 
   return (
-    <div className='max-w-[900px] mx-auto py-10 border border-gray-400 bg-white'>
+    <div className='max-w-[900px] mx-auto py-10 border border-gray-400 rounded-lg bg-white'>
     <div className=' flex gap-10 '>
     <div className='w-[300px] p-5'>
         <img className=' w-5/12  aspect-auto object-contain m-3' src={image}/>
@@ -27,8 +27,8 @@ const CartItem = ({item}) => {
             <button className=' rounded-full py-1 px-3 border border-black' onClick={()=>handleDecrease(id)}>-</button>
         </div>
     </div>
-    <div className=' w-[500px]'>
-        <h2>{title}</h2>
+    <div className=' w-[500px] p-10'>
+        <h2 className=' font-bold text-lg py-1'>{title}</h2>
         <p>{category}</p>
         <p>{price}</p>
         <button>Remove</button>
