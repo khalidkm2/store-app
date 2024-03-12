@@ -8,6 +8,7 @@ import MIssingCart from './MIssingCart'
 const Cart = () => {
   const dispatch = useDispatch()
   const cart = useSelector((store) => store.products.cart)
+  const user = useSelector((store) => store.user)
   if(!cart) return
   // console.log(cart);
 
@@ -24,7 +25,7 @@ const Cart = () => {
 
   console.log(result);
 
-  if(cart.length<=0){
+  if(!user && cart.length<= 0){
     return <MIssingCart/>
   }
 

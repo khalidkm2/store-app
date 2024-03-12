@@ -8,17 +8,17 @@ import { addFilteredProducts } from "../app/productSlice";
 const Header = () => {
   const cart = useSelector((store) => store.products.cart);
   const products = useSelector((store) => store.products.allProducts);
+  const user = useSelector((store) => store.user)
   const filteredProducts = useSelector(
     (store) => store.products.filteredProducts
   );
   const searchText = useRef();
   const dispatch = useDispatch();
 
-  useCustomLocation();
 
   const handleSearch = () => {
-    console.log(searchText.current.value);
-    console.log(products);
+    // console.log(searchText.current.value);
+    // console.log(products);
     if (!searchText.current.value) return;
     const searchedProducts = products.filter((product) => {
       return (
@@ -30,7 +30,7 @@ const Header = () => {
           .includes(searchText.current.value.toLowerCase())
       );
     });
-    console.log(searchedProducts);
+    // console.log(searchedProducts);
 
     dispatch(addFilteredProducts(searchedProducts));
   };
@@ -53,15 +53,21 @@ const Header = () => {
           type="text"
           className=" border border-gray-400 focus:outline-gray-600 mr-3 active:border-blue-800 text-gray-700 w-full p-1 rounded-sm"
         />
-        <button className=" bg-white py-3 px-2 text-black rounded-lg" onClick={handleSearch}>search</button>
+        <button
+          className=" bg-white py-3 px-2 text-black rounded-lg"
+          onClick={handleSearch}
+        >
+          search
+        </button>
       </div>
       <div>
         <ul className=" flex gap-5 cursor-pointer">
           <li className=" hover:text-gray-300">
             <Link to={"/"}>Home</Link>
           </li>
-          <li className=" hover:text-gray-300">language</li>
-          <li className=" hover:text-gray-300"><Link to={"/login"}>Login</Link></li>
+          <li className=" hover:text-gray-300">
+            <Link to={"/login"}>{!user?"login":"profile"}</Link>
+          </li>
           <li className=" hover:text-gray-300">
             <Link to={"/cart"}>cart({cart.length})</Link>
           </li>

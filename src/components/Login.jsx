@@ -1,28 +1,102 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import React, { useRef, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import React, { useEffect, useRef, useState } from "react";
 import { auth } from "../utils/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../app/userSlice";
+import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { formValidate } from "../utils/validate";
 
 const Login = () => {
   const [isSignin, setIsSignin] = useState(true);
-  const email = useRef()
-  const password = useRef()
+  const [errorMessage, setErrorMessage] = useState(null);
+  const fullName = useRef();
+  const email = useRef();
+  const password = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
 
-  const handleSignInSignup = () => {
-    
+  const handleValidation = () => {
+    const msg = isSignin
+      ? formValidate(email.current.value, password.current.value)
+      : formValidate(
+          email.current.value,
+          password.current.value,
+          fullName.current.value
+        );
+    setErrorMessage(msg);
+
+    if (msg) return;
 
     if (!isSignin) {
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
-          console.log("signin successfully");
+          // console.log(user);
+
+          updateProfile(user, {
+            displayName: fullName.current.value,
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              // console.log(error);
+            });
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
           // ..
+        });
+    } else {
+      // console.log("Inside signin with email and password");
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // console.log(user);
+          const { uid, email, displayName } = auth.currentUser;
+          dispatch(
+            addUser({
+              uid: uid,
+              email: email,
+              displayName: displayName,
+            })
+          );
+          navigate("/profile");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
         });
     }
   };
@@ -30,6 +104,12 @@ const Login = () => {
   const toogleSignIn = () => {
     setIsSignin(!isSignin);
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user]);
 
   return (
     <div className=" flex items-center justify-center h-screen">
@@ -45,22 +125,43 @@ const Login = () => {
         {!isSignin && (
           <div className=" flex flex-col">
             <label htmlFor="name">Your FullName</label>
-            <input required className=" border my-2" id="name" type="text" />
+            <input
+              ref={fullName}
+              required
+              className=" border my-2"
+              id="name"
+              type="text"
+            />
           </div>
         )}
         <div className=" flex flex-col">
           <label htmlFor="email">Your email</label>
-          <input ref={email} required className=" border my-2" id="email" type="email" />
+          <input
+            ref={email}
+            required
+            className=" border my-2"
+            id="email"
+            type="email"
+          />
         </div>
         <div className=" flex flex-col">
           <label htmlFor="email">Your Password</label>
-          <input ref={password} required className=" border my-2" id="email" type="password" />
+          <input
+            ref={password}
+            required
+            className=" border my-2"
+            id="email"
+            type="text"
+          />
         </div>
+        <p className=" py-3 text-red-600 text-sm font-semibold">
+          {errorMessage}
+        </p>
         <p onClick={toogleSignIn}>
           {isSignin ? "New User sign up first" : "Already have and accout:"}
         </p>
         <button
-          onClick={handleSignInSignup}
+          onClick={handleValidation}
           className=" w-full bg-green-700 text-white py-2 my-3"
         >
           sign in
