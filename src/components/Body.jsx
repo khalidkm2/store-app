@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCategory } from "../custom/useCategory";
 import Category from "./Category";
 import { addFilteredProducts } from "../app/productSlice";
+import Loading from "./Loading";
+
+
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -14,7 +17,7 @@ const Body = () => {
   const data = useSelector((store) => store.products.filteredProducts);
   const allProducts = useSelector((store) => store.products.allProducts);
 
-  if (!data) return <h1>Loading</h1>;
+  if (!data) return <Loading/>
 
   // console.log(data);
 
