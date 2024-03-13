@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addCart, removeItemCart } from '../app/productSlice';
+import { addCart, removeItemCart, removeOneCart } from '../app/productSlice';
 
 const CartItem = ({item}) => {
     const dispatch = useDispatch()
@@ -16,8 +16,13 @@ const CartItem = ({item}) => {
        dispatch(addCart(item?.data))
     }
 
+    const handleRemove = () => {
+        console.log("inside handle remove");
+        dispatch(removeOneCart(id))
+    }
+
   return (
-    <div className='max-w-[900px] mx-auto py-10 border border-gray-400 rounded-lg bg-white'>
+    <div className='max-w-[900px] mx-auto py-1 border border-gray-400 rounded-lg bg-white'>
     <div className=' flex gap-10 '>
     <div className='w-[300px] p-5'>
         <img className=' w-5/12  aspect-auto object-contain m-3' src={image}/>
@@ -27,11 +32,11 @@ const CartItem = ({item}) => {
             <button className=' rounded-full py-1 px-3 border border-black' onClick={()=>handleDecrease(id)}>-</button>
         </div>
     </div>
-    <div className=' w-[500px] p-10'>
+    <div className=' w-[500px] p-6'>
         <h2 className=' font-bold text-lg py-1'>{title}</h2>
-        <p>{category}</p>
-        <p>{price}</p>
-        <button>Remove</button>
+        <p className=' font-bold text-gray-500 py-1'>{category}</p>
+        <p className=' font-semibold text-gray-500 py-1'>Rs {price}</p>
+        <button onClick={handleRemove} className=' px-5 py-2 bg-red-600 my-3 text-white rounded-md'>Remove</button>
 
     </div>
     </div>

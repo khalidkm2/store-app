@@ -42,9 +42,15 @@ export const productSlice = createSlice({
            state.cart = cart
            
         },
+        removeOneCart:(state,action) => {
+            const cart = [...state.cart]
+            const filteredCart = cart.filter((item) => item.id !== action.payload)
+            console.log(filteredCart);
+            state.cart = filteredCart
+        }
         
     }
 });
 
-export const { addAllProducts,addCategory,addFilteredProducts,addSingleProduct,addCart,addFilteredCart,removeItemCart } = productSlice.actions;
+export const { addAllProducts,addCategory,addFilteredProducts,addSingleProduct,addCart,addFilteredCart,removeItemCart,removeOneCart } = productSlice.actions;
 export const productSliceReducer = productSlice.reducer;

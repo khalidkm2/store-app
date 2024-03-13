@@ -68,7 +68,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(errorCode );
           // ..
         });
     } else {
@@ -157,14 +157,14 @@ const Login = () => {
         <p className=" py-3 text-red-600 text-sm font-semibold">
           {errorMessage}
         </p>
-        <p onClick={toogleSignIn}>
-          {isSignin ? "New User sign up first" : "Already have and accout:"}
+        <p className="  py-1 text-blue-900 cursor-pointer italic font-semibold underline" onClick={toogleSignIn}>
+          {isSignin ? "Haven't account sign up first" : "Already have and accout?"}
         </p>
         <button
           onClick={handleValidation}
           className=" w-full bg-green-700 text-white py-2 my-3"
         >
-          sign in
+          {isSignin?"Sign in":"Sign up"}
         </button>
       </form>
     </div>

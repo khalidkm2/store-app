@@ -10,6 +10,7 @@ import Body from "./components/Body.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
 import Login from "./components/Login.jsx";
 import Profile from "./components/Profile.jsx";
+import Payment from "./components/Payment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:"/profile",
         element:<Profile/>
+      },
+      {
+        path:"/payment",
+        element:<Payment/>
       }
     ],
   },
