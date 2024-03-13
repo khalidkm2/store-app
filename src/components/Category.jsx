@@ -16,9 +16,9 @@ const Category = () => {
  
 
   return (
-    <div className=' font-semibold p-1 md:p-3  border border-gray-500 rounded-lg bg-white '>
-        <h2 className=' cursor-pointer text-[9px] md:text-base text-center' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
-        {showCategory && (<ul>
+    <div className=' flex md:flex-col  font-semibold p-1 md:px-4 md:py-1  border border-gray-500 rounded-lg bg-white '>
+        <h2 className=' cursor-pointer  text-[12px] md:text-base text-center' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
+        {showCategory && (<ul className=' flex md:flex-col shrink-0'>
          {category && category.map((item,index) => <CategoryItem  setShowIndex={() => setShowIndex(index)}
             setFalse={() => setShowIndex(null)}
             showChecked={showIndex === index && true} key={item} item={item}/>)}

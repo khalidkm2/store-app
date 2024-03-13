@@ -33,13 +33,13 @@ const Cart = () => {
 
 
   return (
-    <div className=' grid grid-cols-4 p-5 space-x-4 bg-[#f0f0f0]  pt-10'>
-    <div className=' col-span-3 '>
+    <div className=' grid-cols-12 grid md:grid-cols-4 p-5 space-x-4 bg-[#f0f0f0]  pt-10'>
+    <div className=' col-span-8 md:col-span-3 '>
     {cart && result.map((item) => <CartItem key={item.id} item={item}  />)}
 
     </div>
 
-    <div className=' col-span-1'>
+    <div className=' col-span-4 md:col-span-1'>
       <TotalAmount user={user} cartResult={result} cart={cart} />
     </div>
     
