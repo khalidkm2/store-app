@@ -34,6 +34,10 @@ const Body = () => {
     dispatch(addFilteredProducts(filterData));
   };
 
+  if(data.length == 0){
+    return <NoSearch handleShowAll={handleShowAll} />
+  }
+
   return (
     <div className=" flex flex-col  w-full  md:grid md:grid-cols-10 md:gap-1 pb-6  -z-10 bg-[#f0f0f0] ">
       <div className=" md:my-14 flex flex-wrap  md:flex-col items-center justify-start gap-2 shrink-0  md:col-span-1 text-[12px] md:text-base border-r-2 border-gray-300 p-3">
@@ -52,9 +56,7 @@ const Body = () => {
         </button>
         <Category />
       </div>
-      {data.length == 0 ? (
-      <NoSearch handleShowAll={handleShowAll} />
-      ) : (
+     
         <div className="  md:col-span-9">
           <h1 className=" font-bold text-center my-2 md:my-6 text-blue-500 text-4xl">Products</h1>
           <div className=" flex justify-evenly  md:justify-around flex-wrap gap-1 md:gap-4">
@@ -63,7 +65,7 @@ const Body = () => {
             ))}
           </div>
         </div>
-      )}
+    
     </div>
   );
 };
