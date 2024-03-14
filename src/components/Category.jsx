@@ -17,7 +17,7 @@ const Category = () => {
 
   return (
     <div className=' flex md:flex-col  font-semibold p-1 md:px-4 md:py-1  border border-gray-500 rounded-lg bg-white '>
-        <h2 className=' hidden md:block cursor-pointer  text-[12px] md:text-base text-center' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
+        <h2 className=' hidden md:block font-bold cursor-pointer  text-[12px] md:text-base text-center' onClick={handleCategory}>Category {showCategory?"⬆️":"⬇️"}</h2>
         {/* for smaller screen */}
         <div className=' flex md:hidden'>
         <ul className=' flex md:flex-col shrink-0'>
