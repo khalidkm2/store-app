@@ -8,6 +8,7 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 
 const Header = () => {
+  const[text,setText] = useState("");
   const [nav,setNav] = useState(false)
   const cart = useSelector((store) => store.products.cart);
   const products = useSelector((store) => store.products.allProducts);
@@ -40,11 +41,15 @@ const Header = () => {
     // console.log(searchedProducts);
 
     dispatch(addFilteredProducts(searchedProducts));
+    setText("")
     navigate("/")
   };
 
-  const handleAll = () => {
-    dispatch(addFilteredProducts(products));
+  const handleChange = (e) => {
+    // dispatch(addFilteredProducts(products));
+    setText(e.target.value)
+
+
   };
 
   return (
@@ -56,7 +61,8 @@ const Header = () => {
 
       <div className=" w-8/12 md:h-10 h-8 md:w-6/12 flex justify-between">
         <input
-          onChange={handleAll}
+          value={text}
+          onChange={(e)=>handleChange(e)}
           ref={searchText}
           type="text"
           className=" border border-gray-400 px-2 focus:outline-gray-600 mr-3 active:border-blue-800 text-gray-700 w-full  rounded-sm"

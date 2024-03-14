@@ -28,7 +28,7 @@ const TotalAmount = ({ cartResult, cart, user }) => {
 
 
   return (
-    <div className='bg-white border border-gray-400 p-4 rounded-l font-bold'>
+    <div className='bg-white border border-gray-400 p-4 rounded-l font-bold my-2'>
       <h1 className='border-b border-gray-600 text-xl font-bold'>Price Details</h1>
       <div>
         <h2 className='mt-2 py-1'>Price({cartResult.length} items)</h2>
