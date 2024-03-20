@@ -33,8 +33,8 @@ const Cart = () => {
 
 
   return (
-    <div className=' flex flex-col  md:grid md:grid-cols-4 p-5  md:space-x-4 bg-[#f0f0f0]  pt-10'>
-    <div className='  md:col-span-3 '>
+    <div className=' flex flex-col  md:grid md:grid-cols-4 p-5 md:w-[1600px]   md:space-x-4 bg-[#f0f0f0]  pt-10'>
+    <div className='  md:col-span-2 md:ml-8 '>
     {cart && result.map((item) => <CartItem key={item.id} item={item}  />)}
 
     </div>

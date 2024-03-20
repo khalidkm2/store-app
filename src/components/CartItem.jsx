@@ -23,7 +23,7 @@ const CartItem = ({item}) => {
 
   return (
     <div className=' w-full md:min-w-[700px] mx-auto py-1  border border-gray-400 rounded-lg bg-white'>
-    <div className=' flex gap-1 md:gap-10  '>
+    <div className=' flex gap-1  md:gap-10 md:justify-between  '>
     <div className='py-1'>
         <img className=' w-[90px] md:w-[150px]  aspect-auto object-contain m-3' src={image}/>
         <div className=' ml-4 flex'>

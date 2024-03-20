@@ -5,6 +5,9 @@ import { LOGO_URL } from "../utils/constants";
 import { useCustomLocation } from "../custom/useLocation";
 import { addFilteredProducts } from "../app/productSlice";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { IoSearch } from "react-icons/io5";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 
 
 const Header = () => {
@@ -68,10 +71,10 @@ const Header = () => {
           className=" border border-gray-400 px-2 focus:outline-gray-600 mr-3 active:border-blue-800 text-gray-700 w-full  rounded-sm"
         />
         <button
-          className=" bg-white p-1 md:text-base text-xs md:py-3 md:px-2 text-black rounded-lg"
+          className=" bg-white p-1 md:text-base text-xs md:py-3 md:px-6 text-black rounded-lg"
           onClick={handleSearch}
         >
-          search
+          <IoSearch className=" size-5" />
         </button>
       </div>
 
@@ -105,7 +108,7 @@ const Header = () => {
             <Link to={"/login"}>{!user ? "Login" : "Profile"}</Link>
           </li>
           <li className=" hover:text-gray-300">
-            <Link to={"/cart"}>Cart({cart.length})</Link>
+            <Link to={"/cart"}>  ({cart.length})</Link>
           </li>
         </ul>
       </div>
