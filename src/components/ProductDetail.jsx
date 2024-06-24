@@ -4,6 +4,9 @@ import { useSingleProduct } from '../custom/useSingleProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../app/productSlice';
 
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ProductDetail = () => {
   const dispatch = useDispatch()
     const{id} = useParams()
@@ -20,6 +23,17 @@ const ProductDetail = () => {
    const handleCart = () => {
     // console.log("inside cart adding");
       dispatch((addCart(singleProduct)))
+      return toast.success('🛒Added to Cart!', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });
    }
 
 
@@ -41,7 +55,7 @@ const ProductDetail = () => {
         <p>Rate: {rating.rate}⭐</p>
         </div>
         <div>
-          <button className=' p-2 border border-black rounded-md hover:bg-black hover:text-white transition-all duration-150 ease-out' onClick={handleCart}>Add to Cart</button>
+          <button className=' active:bg-black active:text-white p-2 border border-black rounded-md hover:bg-gray-100 transition-all duration-150 ease-out' onClick={handleCart}>Add to Cart</button>
         </div>
         </div>
         

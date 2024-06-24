@@ -118,39 +118,39 @@ const Login = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className=" border border-black p-10 "
+        className=" border-2 rounded-xl border-gray-100 bg-gray-200 w-3/2 md:w-1/3 p-10 "
       >
-        <h1 className=" text-lg font-bold my-2 py-6 text-blue-500">
-          Login to your account
+        <h1 className=" text-xl font-bold my-2 py-6 text-blue-500">
+          {isSignin ? "Login to your account" : "Sign up a new account"}
         </h1>
         {!isSignin && (
           <div className=" flex flex-col">
-            <label htmlFor="name">Your FullName</label>
+            <label className=" font-semibold" htmlFor="name">Your FullName</label>
             <input
               ref={fullName}
               required
-              className=" border my-2"
+              className=" pl-2 py-2 rounded-sm focus-within:outline-none focus-within:border-gray-300 border-2 my-2"
               id="name"
               type="text"
             />
           </div>
         )}
         <div className=" flex flex-col">
-          <label htmlFor="email">Your email</label>
+          <label className=" font-semibold" htmlFor="email">Your email</label>
           <input
             ref={email}
             required
-            className=" border my-2"
+           className=" pl-2 py-2 rounded-sm focus-within:outline-none focus-within:border-gray-300 border-2 my-2"
             id="email"
             type="email"
           />
         </div>
         <div className=" flex flex-col">
-          <label htmlFor="email">Your Password</label>
+          <label className=" font-semibold" htmlFor="email">Your Password</label>
           <input
             ref={password}
             required
-            className=" border my-2"
+           className=" pl-2 py-2 rounded-sm focus-within:outline-none focus-within:border-gray-300 border-2 my-2"
             id="email"
             type="text"
           />
@@ -163,7 +163,7 @@ const Login = () => {
         </p>
         <button
           onClick={handleValidation}
-          className=" w-full bg-green-700 text-white py-2 my-3"
+          className=" hover:opacity-90 w-full bg-green-700 text-white py-2 my-3"
         >
           {isSignin?"Sign in":"Sign up"}
         </button>

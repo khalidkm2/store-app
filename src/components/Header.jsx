@@ -108,7 +108,7 @@ const Header = () => {
             <Link to={"/login"}>{!user ? "Login" : "Profile"}</Link>
           </li>
           <li className=" hover:text-gray-300">
-            <Link to={"/cart"}>  ({cart.length})</Link>
+            <Link to={"/cart"}>  Cart({cart.length})</Link>
           </li>
         </ul>
       </div>
