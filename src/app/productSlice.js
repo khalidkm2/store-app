@@ -28,6 +28,11 @@ export const productSlice = createSlice({
             
             state.cart.push(action.payload)
         },
+
+        emptyCart:(state) => {
+            state.cart = []
+        },
+
         addFilteredCart:(state,action) => {
             state.filteredCart = action.payload
         },
@@ -52,5 +57,5 @@ export const productSlice = createSlice({
     }
 });
 
-export const { addAllProducts,addCategory,addFilteredProducts,addSingleProduct,addCart,addFilteredCart,removeItemCart,removeOneCart } = productSlice.actions;
+export const { addAllProducts,addCategory,addFilteredProducts,addSingleProduct,addCart,addFilteredCart,removeItemCart,removeOneCart,emptyCart } = productSlice.actions;
 export const productSliceReducer = productSlice.reducer;
